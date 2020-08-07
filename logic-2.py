@@ -57,11 +57,11 @@ def round10(num):
 
 def close_far(a, b, c):
     if is_close(a, b):
-        if is_far(a, c):
+        if is_far(a, c) and is_far(b, c):
             return True
         else:
             return False
-    elif is_close(a, c):
+    elif is_close(a, c) and is_far(b, c):
         return True
     else:
         return False
@@ -78,6 +78,13 @@ def is_far(x1, x2):
     else:
         return False
 
+def make_chocolate(small, big, goal):
+    if big * 5 >= goal:
+        return goal % 5 if goal % 5 <= small else -1
+    elif big * 5 < goal:
+        return abs(goal - (5 * big)) if abs(goal - (5 * big)) <= small else -1
+    else:
+        return -1
 
 
 
